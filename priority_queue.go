@@ -86,8 +86,8 @@ func (pq *PriorityQueue[T]) Pop() {
 	pq.Tree = pq.Tree[0 : pq.Size()-1]
 }
 
-// Insert inserts a new item with its priority to PriorityQueue.
-func (pq *PriorityQueue[T]) Insert(it T, priority float64) {
+// Push pushes a new item with its priority to PriorityQueue.
+func (pq *PriorityQueue[T]) Push(it T, priority float64) {
 	pq.Tree = append(pq.Tree, item[T]{item: it, priority: priority})
 
 	obj_id := pq.Size() - 1

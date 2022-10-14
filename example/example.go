@@ -9,10 +9,10 @@ import (
 func main() {
 	pq := new(priority_queue.PriorityQueue[string])
 
-	pq.Insert("a", 7.5)
-	pq.Insert("b", -2.1)
-	pq.Insert("c", 3.2)
-	pq.Insert("d", 0.0)
+	pq.Push("a", 7.5)
+	pq.Push("b", -2.1)
+	pq.Push("c", 3.2)
+	pq.Push("d", 0.0)
 
 	item, priority, err := pq.Front()
 	if err != nil {
