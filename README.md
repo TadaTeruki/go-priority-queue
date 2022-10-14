@@ -39,4 +39,4 @@ func main() {
 ## LICENSE
 
 MIT License<br>
-Copyright (c) 2022 Tada Teruki (多田 瑛貴)
+Copyright (c) 2022 Teruki TADA
