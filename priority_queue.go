@@ -24,10 +24,8 @@ SOFTWARE.
 
 */
 
-// Package priority_queue provides simple implementation of priority queue for golang.
-package priority_queue
-
-import "errors"
+// Package pq provides simple implementation of priority queue for golang.
+package pq
 
 // PriorityQueue holds items within the structure of priority queue.
 type PriorityQueue[T any] struct {
@@ -46,18 +44,23 @@ func (pq *PriorityQueue[T]) Size() int {
 
 // Front returns the most prior item with its priority in PriorityQueue.
 // If the PriorityQueue has no data, Front alternatively returns an error.
-func (pq *PriorityQueue[T]) Front() (T, float64, error) {
+func (pq *PriorityQueue[T]) Front() (*T, float64) {
 	if pq.Size() == 0 {
-		return *new(T), 0., errors.New("priority queue has no data")
+		return nil, 0.
 	}
 
 	obj := pq.Tree[0]
 
-	return obj.item, obj.priority, nil
+	return &obj.item, obj.priority
 }
 
-// Pop removes the most prior item from PriorityQueue.
-func (pq *PriorityQueue[T]) Pop() {
+// Pop pops the most prior item from PriorityQueue.
+func (pq *PriorityQueue[T]) Pop() (*T, float64) {
+	fobj, fpr := pq.Front()
+
+	if fobj == nil {
+		return fobj, fpr
+	}
 
 	obj_id := 0
 	pq.Tree[obj_id] = pq.Tree[pq.Size()-1]
@@ -84,6 +87,8 @@ func (pq *PriorityQueue[T]) Pop() {
 		}
 	}
 	pq.Tree = pq.Tree[0 : pq.Size()-1]
+
+	return fobj, fpr
 }
 
 // Push pushes a new item with its priority to PriorityQueue.

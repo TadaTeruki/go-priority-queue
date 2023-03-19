@@ -3,21 +3,18 @@ package main
 import (
 	"fmt"
 
-	priority_queue "github.com/TadaTeruki/go-priority-queue"
+	pq "github.com/TadaTeruki/go-priority-queue/v2"
 )
 
 func main() {
-	pq := new(priority_queue.PriorityQueue[string])
+	priorityQueue := new(pq.PriorityQueue[string])
 
-	pq.Push("a", 7.5)
-	pq.Push("b", -2.1)
-	pq.Push("c", 3.2)
-	pq.Push("d", 0.0)
+	priorityQueue.Push("a", 7.5)
+	priorityQueue.Push("b", -2.1)
+	priorityQueue.Push("c", 3.2)
+	priorityQueue.Push("d", 0.0)
 
-	item, priority, err := pq.Front()
-	if err != nil {
-		panic(err)
-	}
+	item, priority := priorityQueue.Pop()
 
 	fmt.Println(item, priority)
 }
